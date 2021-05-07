@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
@@ -26,7 +25,6 @@ class PostsListAdapter(
     class ViewHolder(itemView: View, private val fragment: PostsListFragment) :
         View.OnClickListener, RecyclerView.ViewHolder(itemView) {
         private lateinit var post: Post
-        var navController: NavController? = null
 
         init {
             itemView.setOnClickListener(this)
@@ -35,11 +33,11 @@ class PostsListAdapter(
         fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> =
             object : ItemDetailsLookup.ItemDetails<Long>() {
                 override fun getPosition(): Int = absoluteAdapterPosition
-                override fun getSelectionKey(): Long? = itemId
+                override fun getSelectionKey(): Long = itemId
             }
 
         @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
-        fun bind(post: Post, isSelected: Boolean) {
+        fun bind(post: Post) {
             this.post = post
             itemView.context
             itemView.tv_title.text = post.title
@@ -67,8 +65,7 @@ class PostsListAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val isSelected = tracker?.isSelected(position.toLong()) ?: false
-        holder.bind(posts[position], isSelected)
+        holder.bind(posts[position])
     }
 
     override fun getItemId(position: Int): Long = position.toLong()

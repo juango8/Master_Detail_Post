@@ -24,6 +24,14 @@ class PostsListFragment : Fragment() {
                 "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehen" +
                         "derit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveni" +
                         "et architecto"
+            ),
+            Post(
+                1,
+                2,
+                "occaecati excepturi optio reprehenderit",
+                "expedita et cum reprehen" +
+                        "derit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveni" +
+                        "et architecto"
             )
         ) as MutableList<Post>, this
     )
@@ -56,7 +64,7 @@ class PostsListFragment : Fragment() {
         context?.let {
             post_recycler_view.addItemDecoration(
                 DividerItemDecoration(
-                    ContextCompat.getColor(it, R.color.white), heightInPixels
+                    ContextCompat.getColor(it, R.color.black), heightInPixels
                 )
             )
         }
