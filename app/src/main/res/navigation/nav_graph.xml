@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/PostsListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.juango.masterdetailpost.FirstFragment"
+        android:id="@+id/PostsListFragment"
+        android:name="com.juango.masterdetailpost.PostsListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_post_list">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_List_to_Detail"
+            app:destination="@id/DetailPostFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.juango.masterdetailpost.SecondFragment"
+        android:id="@+id/DetailPostFragment"
+        android:name="com.juango.masterdetailpost.DetailPostFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_detail_post">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_List_to_Detail"
+            app:destination="@id/PostsListFragment" />
     </fragment>
 </navigation>

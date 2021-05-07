@@ -7,32 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
-import com.juango.masterdetailpost.databinding.FragmentFirstBinding
+import kotlinx.android.synthetic.main.fragment_post_list.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
-
-    private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+class PostsListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
-
+        return inflater.inflate(R.layout.fragment_post_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val options = navOptions {
             anim {
                 enter = R.anim.slide_in_right
@@ -41,13 +28,9 @@ class FirstFragment : Fragment() {
                 popExit = R.anim.slide_out_right
             }
         }
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, null, options)
+        button_first.setOnClickListener {
+            findNavController().navigate(R.id.action_List_to_Detail, null, options)
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
