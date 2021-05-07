@@ -8,12 +8,8 @@
     <fragment
         android:id="@+id/PostsListFragment"
         android:name="com.juango.masterdetailpost.PostsListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/posts_list_label"
         tools:layout="@layout/fragment_post_list">
-        <argument
-            android:name="flowStepNumber"
-            app:argType="integer"
-            android:defaultValue="1"/>
         <action
             android:id="@+id/action_List_to_Detail"
             app:destination="@id/DetailPostFragment" />
@@ -21,11 +17,19 @@
     <fragment
         android:id="@+id/DetailPostFragment"
         android:name="com.juango.masterdetailpost.DetailPostFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/detail_post_label"
         tools:layout="@layout/fragment_detail_post">
 
         <action
             android:id="@+id/action_Detail_to_List"
             app:destination="@id/PostsListFragment" />
+        <argument
+            android:name="idPost"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="titlePost"
+            app:argType="string"
+            android:defaultValue="Title" />
     </fragment>
 </navigation>
