@@ -22,9 +22,10 @@ class DetailPostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textview_second.text = args.titlePost
-        button_second.setOnClickListener {
-            findNavController().navigate(R.id.action_Detail_to_List)
-        }
+        tv_title_detail.text = args.titlePost
+        tv_content_detail.text = args.contentPost
+//        button_second.setOnClickListener {
+//            findNavController().navigate(R.id.action_Detail_to_List)
+//        }
     }
 }

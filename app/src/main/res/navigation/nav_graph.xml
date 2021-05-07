@@ -31,5 +31,9 @@
             android:name="titlePost"
             app:argType="string"
             android:defaultValue="Title" />
+        <argument
+            android:name="contentPost"
+            app:argType="string"
+            android:defaultValue="Content" />
     </fragment>
 </navigation>

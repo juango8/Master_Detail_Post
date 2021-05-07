@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.navOptions
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
@@ -49,15 +48,8 @@ class PostsListAdapter(
 
         override fun onClick(view: View?) {
             view?.let {
-                val options = navOptions {
-                    anim {
-                        enter = R.anim.slide_in_right
-                        exit = R.anim.slide_out_left
-                        popEnter = R.anim.slide_in_left
-                        popExit = R.anim.slide_out_right
-                    }
-                }
-                val action = PostsListFragmentDirections.actionListToDetail(post.id, post.title)
+                val action =
+                    PostsListFragmentDirections.actionListToDetail(post.id, post.title, post.body)
                 findNavController(fragment).navigate(action)
             }
         }

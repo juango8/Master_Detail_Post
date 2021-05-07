@@ -9,4 +9,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_of_post">Title of Post</string>
+    <string name="content_of_post">Content of post</string>
 </resources>
