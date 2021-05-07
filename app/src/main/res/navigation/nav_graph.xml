@@ -10,7 +10,10 @@
         android:name="com.juango.masterdetailpost.PostsListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_post_list">
-
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="1"/>
         <action
             android:id="@+id/action_List_to_Detail"
             app:destination="@id/DetailPostFragment" />
@@ -22,7 +25,7 @@
         tools:layout="@layout/fragment_detail_post">
 
         <action
-            android:id="@+id/action_List_to_Detail"
+            android:id="@+id/action_Detail_to_List"
             app:destination="@id/PostsListFragment" />
     </fragment>
 </navigation>

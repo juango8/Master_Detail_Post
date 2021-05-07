@@ -20,7 +20,7 @@ class DetailPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button_second.setOnClickListener {
-            findNavController().navigate(R.id.action_List_to_Detail)
+            findNavController().navigate(R.id.action_Detail_to_List)
         }
     }
 }
