@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.selection.ItemDetailsLookup
-import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item_post.view.*
 
@@ -15,8 +14,6 @@ class PostsListAdapter(
     private val actualFragment: PostsListFragment
 ) :
     RecyclerView.Adapter<PostsListAdapter.ViewHolder>() {
-
-    var tracker: SelectionTracker<Long>? = null
 
     init {
         setHasStableIds(true)
