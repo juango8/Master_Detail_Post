@@ -55,10 +55,10 @@ class PostsListFragment : Fragment() {
 
     private fun getAllPosts() {
         networkStatusChecker.performIfConnectedToInternet {
-            remoteApi.getPosts { posts, error ->
-                if (posts.isNotEmpty()) {
-                    onPostReceived(posts)
-                } else if (error != null) {
+            remoteApi.getPosts { result ->
+                if (result is Success) {
+                    onPostReceived(result.data)
+                } else {
                     Toast.makeText(context, "Failed to fetch posts!", Toast.LENGTH_LONG).show()
                 }
             }

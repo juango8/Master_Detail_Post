@@ -67,10 +67,10 @@ class DetailPostFragment : Fragment() {
 
     private fun getAllComments(postId: Int) {
         networkStatusChecker.performIfConnectedToInternet {
-            remoteApi.getDetailComments(postId) { comment, error ->
-                if (comment.isNotEmpty()) {
-                    onCommentReceived(comment)
-                } else if (error != null) {
+            remoteApi.getDetailComments(postId) { result ->
+                if (result is Success) {
+                    onCommentReceived(result.data)
+                } else {
                     Toast.makeText(context, "Failed to fetch comments!", Toast.LENGTH_LONG).show()
                 }
             }

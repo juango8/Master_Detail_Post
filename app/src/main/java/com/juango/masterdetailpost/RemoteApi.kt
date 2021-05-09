@@ -6,10 +6,10 @@ import retrofit2.Response
 
 class RemoteApi(private val apiService: RemoteApiService) {
 
-    fun getPosts(onPostsReceived: (List<Post>, Throwable?) -> Unit) {
+    fun getPosts(onPostsReceived: (Result<List<Post>>) -> Unit) {
         apiService.getPost().enqueue(object : Callback<GetPostsResponse> {
             override fun onFailure(call: Call<GetPostsResponse>, error: Throwable) {
-                onPostsReceived(emptyList(), error)
+                onPostsReceived(Failure(error))
             }
 
             override fun onResponse(
@@ -19,18 +19,18 @@ class RemoteApi(private val apiService: RemoteApiService) {
                 val data = response.body()
 
                 if (data == null || data.posts.isNullOrEmpty()) {
-                    onPostsReceived(emptyList(), NullPointerException("No response body!"))
+                    onPostsReceived(Failure(NullPointerException("No data available!")))
                 } else {
-                    onPostsReceived(data.posts, null)
+                    onPostsReceived(Success(data.posts))
                 }
             }
         })
     }
 
-    fun getDetailComments(postId: Int, onCommentsReceived: (List<Comment>, Throwable?) -> Unit) {
+    fun getDetailComments(postId: Int, onCommentsReceived: (Result<List<Comment>>) -> Unit) {
         apiService.getDetailComments(postId).enqueue(object : Callback<GetCommentsResponse> {
             override fun onFailure(call: Call<GetCommentsResponse>, error: Throwable) {
-                onCommentsReceived(emptyList(), error)
+                onCommentsReceived(Failure(error))
             }
 
             override fun onResponse(
@@ -40,9 +40,9 @@ class RemoteApi(private val apiService: RemoteApiService) {
                 val data = response.body()
 
                 if (data == null || data.comments.isNullOrEmpty()) {
-                    onCommentsReceived(emptyList(), NullPointerException("No response body!"))
+                    onCommentsReceived(Failure(NullPointerException("No response body!")))
                 } else {
-                    onCommentsReceived(data.comments, null)
+                    onCommentsReceived(Success(data.comments))
                 }
             }
         })
